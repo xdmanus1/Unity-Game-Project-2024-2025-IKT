@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Gamepad2, LogIn, LogOut, Menu, X } from 'lucide-react'
 import LandingPage from './components/landing-page'
@@ -7,6 +7,7 @@ import LoginRegister from './components/login-register'
 import { AuthProvider, useAuth } from './components/AuthContext'
 import Dashboard from './components/dashboard'
 import AboutPage from './components/about-page'
+import GameDemo from './components/game-demo'
 
 // Navbar component
 const Navbar: React.FC = () => {
@@ -19,7 +20,7 @@ const Navbar: React.FC = () => {
     <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full bg-gray-900 bg-opacity-90 backdrop-blur-md z-50 border-b border-gray-800">
       <Link to="/" className="flex items-center justify-center">
         <Gamepad2 className="h-6 w-6 text-blue-500" />
-        <span className="ml-2 text-lg font-bold text-white">PixelBlast</span>
+        <span className="ml-2 text-lg font-bold text-white">Quantum Vendetta</span>
       </Link>
       <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
         <NavLinks currentUser={currentUser} logout={logout} />
@@ -74,18 +75,28 @@ const Navbar: React.FC = () => {
 
 // NavLinks component
 const NavLinks: React.FC<{ currentUser: any; logout: () => void; onClick?: () => void }> = ({ currentUser, logout, onClick }) => {
-  const linkClass = "w-full md:w-auto px-1 py-2 md:py-0 text-center relative text-lg font-medium text-gray-300 transition-colors before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2 before:top-3 before:h-2 before:w-0 before:rounded-full before:bg-blue-500 before:blur-md before:transition-all before:duration-300 hover:text-blue-500 hover:before:w-5 hover:before:h-5 hover:before:bg-purple-500";
+  const location = useLocation();
+  const baseLinkClass = "w-full md:w-auto px-1 py-2 md:py-0 text-center relative text-lg font-medium transition-colors before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2 before:top-3 before:h-2 before:w-0 before:rounded-full before:bg-blue-500 before:blur-md before:transition-all before:duration-300 hover:text-blue-500 hover:before:w-5 hover:before:h-5 hover:before:bg-purple-500";
+  const activeLinkClass = "text-blue-500 before:w-5 before:h-5 before:bg-purple-500";
+  const inactiveLinkClass = "text-gray-300";
+
+  const getLinkClass = (path: string) => {
+    return `${baseLinkClass} ${location.pathname === path ? activeLinkClass : inactiveLinkClass}`;
+  };
 
   return (
     <>
-      <Link to="/" className={linkClass} onClick={onClick}>
-        Homevv
+      <Link to="/" className={getLinkClass("/")} onClick={onClick}>
+        Home
       </Link>
-      <Link to="/about" className={linkClass} onClick={onClick}>
+      <Link to="/about" className={getLinkClass("/about")} onClick={onClick}>
         About
       </Link>
+      <Link to="/demo" className={getLinkClass("/demo")} onClick={onClick}>
+        Demo
+      </Link>
       {currentUser && (
-        <Link to="/dashboard" className={linkClass} onClick={onClick}>
+        <Link to="/dashboard" className={getLinkClass("/dashboard")} onClick={onClick}>
           Dashboard
         </Link>
       )}
@@ -94,7 +105,7 @@ const NavLinks: React.FC<{ currentUser: any; logout: () => void; onClick?: () =>
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Link to="/auth" className={`${linkClass} before:top-2 flex items-center justify-center gap-2`} onClick={onClick}>
+        <Link to="/auth" className={`${getLinkClass("/auth")} before:top-2 flex items-center justify-center gap-2`} onClick={onClick}>
           {currentUser ? (
             <>
               <span className="md:hidden" onClick={(e) => { e.preventDefault(); logout(); }}>Sign Out</span>
@@ -174,7 +185,19 @@ const App: React.FC = () => {
                     </motion.div>
                   } 
                 />
-                {/* Add more routes here as needed */}
+                <Route 
+                  path="/demo" 
+                  element={
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <GameDemo />
+                    </motion.div>
+                  } 
+                />
               </Routes>
             </AnimatePresence>
           </main>

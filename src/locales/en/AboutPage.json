@@ -1,0 +1,52 @@
+{
+    "hero": {
+      "title": "Quantum Vendetta",
+      "subtitle": "A thrilling top-down 2D shooter blending sci-fi and fantasy",
+      "meetTeam": "Meet the Team"
+    },
+    "team": {
+      "title": "The Duo Behind Quantum Vendetta",
+      "members": {
+        "józsef": {
+          "name": "Balogh József Vendel",
+          "role": "Game Developer",
+          "description": "József is the creative force behind Quantum Vendetta's gameplay. With a passion for blending sci-fi and fantasy elements, József crafts engaging levels, characters, and storylines that bring our unique world to life."
+        },
+        "hunor": {
+          "name": "Karsa Hunor Ákos",
+          "role": "Full-Stack Developer",
+          "description": "Hunor is the technical wizard responsible for the website, launcher, and backend infrastructure. Ensuring a smooth experience for players both in and out of the game, Sam's expertise ties everything together seamlessly."
+        }
+      }
+    },
+    "overview": {
+      "title": "Quantum Vendetta: A New Frontier",
+      "p1": "Quantum Vendetta is an exhilarating top-down 2D shooter that seamlessly blends sci-fi technology with fantastical elements. Set in a universe where magic and advanced tech coexist, players navigate through intricately designed levels, facing off against a diverse array of enemies.",
+      "p2": "Our game offers a unique twist on the classic shooter genre, incorporating both futuristic weaponry and mystical abilities. With its rich storyline and immersive world-building, Quantum Vendetta promises an unforgettable gaming experience that pushes the boundaries of the 2D shooter genre."
+    },
+    "conceptArt": {
+      "title": "Concept Art Gallery",
+      "alt": "Concept Art"
+    },
+    "features": {
+      "title": "Key Features",
+      "items": {
+        "action": {
+          "title": "Intense 2D Action",
+          "description": "Fast-paced, top-down shooter gameplay with precise controls"
+        },
+        "blend": {
+          "title": "Sci-Fi Meets Fantasy",
+          "description": "Unique blend of futuristic technology and magical abilities"
+        },
+        "experience": {
+          "title": "Seamless Experience",
+          "description": "Integrated website, launcher, and game for a smooth player journey"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Join the Vendetta?",
+      "button": "Play Now"
+    }
+  }

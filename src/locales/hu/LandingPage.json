@@ -1,0 +1,45 @@
+{
+    "hero": {
+      "title": "Quantum Vendetta: Felülnézeti 2D Lövöldözős Játék",
+      "description": "Merülj el az intenzív akció és stratégia világában. Küzdj át az ellenségek hullámain ebben az izgalmas felülnézeti 2D lövöldözős játékban.",
+      "playButton": "Játék Indítása",
+      "trailerButton": "Előzetes Megtekintése"
+    },
+    "features": {
+      "title": "Játék Jellemzői",
+      "action": {
+        "title": "Pörgős Akció",
+        "description": "Tapasztald meg a véget nem érő izgalmakat a gyors játékmenettel."
+      },
+      "strategy": {
+        "title": "Stratégiai Mélység",
+        "description": "Tervezd meg lépéseidet és járj túl ellenségeid eszén a túléléshez."
+      },
+      "updates": {
+        "title": "Rendszeres Frissítések",
+        "description": "Folyamatosan bővülő tartalom és új funkciók, hogy a játék mindig friss maradjon."
+      },
+      "powerups": {
+        "title": "Fejlesztések",
+        "description": "Gyűjts és használj különféle fejlesztéseket képességeid növeléséhez."
+      }
+    },
+    "about": {
+      "title": "A Quantum Vendettáról",
+      "description": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, amely ötvözi a pörgős akciót a stratégiai játékmenettel. Egy lelkes indie játékfejlesztő csapat alkotásaként küldetésünk egy felejthetetlen játékélmény nyújtása, amely újra és újra visszacsábít.",
+      "features": {
+        "1": "Intuitív irányítás a gördülékeny játékmenetért",
+        "2": "Változatos ellenségtípusok és kihívást jelentő főellenségek",
+        "3": "Ranglisták és teljesítmények"
+      }
+    },
+    "images": {
+      "gameplay": "Quantum Vendetta Játékmenet",
+      "screenshot": "Quantum Vendetta Képernyőkép"
+    },
+    "footer": {
+      "copyright": "© 2024 Quantum Vendetta. Minden jog fenntartva.",
+      "terms": "Felhasználási Feltételek",
+      "privacy": "Adatvédelmi Irányelvek"
+    }
+  }

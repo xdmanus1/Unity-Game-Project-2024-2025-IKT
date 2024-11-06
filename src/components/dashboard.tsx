@@ -150,7 +150,8 @@ const Dashboard: React.FC = () => {
       <div className="flex justify-center items-center h-screen">
         <motion.div
           className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full"
-          animate={{ rotate: 360 }}
+          initial={{scale: 0}}
+          animate={{ rotate: 360, scale: 0.2 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
         />
       </div>
@@ -168,9 +169,9 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: -20, scale: 1}}
+        animate={{ opacity: 1, y: 0}}
+        transition={{ duration: 1 }}
       >
         <h1 className="text-4xl font-bold text-center text-white mb-12">Player Dashboard</h1>
       </motion.div>
@@ -179,10 +180,10 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <StatCard title="Total Score" value={userStats?.score || 0} icon={<Trophy size={24} />} />
           <StatCard title="Kills" value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
-          <StatCard title="Accuracy" value={`${userStats?.accuracy || 0}%`} icon={<Target size={24} />} />
+          {/* <StatCard title="Accuracy" value={`${userStats?.accuracy || 0}%`} icon={<Target size={24} />} /> */}
           <StatCard title="Time Played" value={`${userStats?.timePlayed || 0} hrs`} icon={<Clock size={24} />} />
-          <StatCard title="Highest Streak" value={userStats?.highestStreak || 0} icon={<Zap size={24} />} />
-          <StatCard title="Level" value={userStats?.level || 1} icon={<Star size={24} />} />
+          {/* <StatCard title="Highest Streak" value={userStats?.highestStreak || 0} icon={<Zap size={24} />} />
+          <StatCard title="Level" value={userStats?.level || 1} icon={<Star size={24} />} /> */}
         </div>
       </div>
 

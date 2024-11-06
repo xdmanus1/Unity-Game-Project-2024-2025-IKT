@@ -1,0 +1,47 @@
+{
+  
+    "hero": {
+      "title": "Quantum Vendetta: Top-Down 2D Shooter",
+      "description": "Dive into a world of intense action and strategy. Blast through waves of enemies in this thrilling top-down 2D shooter.",
+      "playButton": "Play Now",
+      "trailerButton": "Watch Trailer"
+    },
+    "features": {
+      "title": "Game Features",
+      "action": {
+        "title": "Fast-paced Action",
+        "description": "Experience non-stop excitement with rapid-fire gameplay."
+      },
+      "strategy": {
+        "title": "Strategic Depth",
+        "description": "Plan your moves and outsmart your enemies to survive."
+      },
+      "updates": {
+        "title": "Regular Updates",
+        "description": "New content and features added frequently to keep the game fresh."
+      },
+      "powerups": {
+        "title": "Power-ups",
+        "description": "Collect and use various power-ups to enhance your abilities."
+      }
+    },
+    "about": {
+      "title": "About Quantum Vendetta",
+      "description": "Quantum Vendetta is a thrilling top-down 2D shooter that combines fast-paced action with strategic gameplay. Developed by a passionate team of indie game developers, our mission is to deliver an unforgettable gaming experience that keeps you coming back for more.",
+      "features": {
+        "1": "Intuitive controls for smooth gameplay",
+        "2": "Diverse enemy types and challenging bosses",
+        "3": "Leaderboards and achievements"
+      }
+    },
+    "images": {
+      "gameplay": "Quantum Vendetta Gameplay",
+      "screenshot": "Quantum Vendetta Screenshot"
+    },
+    "footer": {
+      "copyright": "© 2024 Quantum Vendetta. All rights reserved.",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    }
+  }
+  

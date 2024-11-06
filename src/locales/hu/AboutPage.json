@@ -1,0 +1,52 @@
+{
+    "hero": {
+      "title": "Quantum Vendetta",
+      "subtitle": "Izgalmas felülnézeti 2D lövöldözős játék, amely ötvözi a sci-fit és a fantáziát",
+      "meetTeam": "Ismerd meg a csapatot"
+    },
+    "team": {
+      "title": "A Quantum Vendetta mögött álló kettős",
+      "members": {
+        "alex": {
+          "name": "Alex Johnson",
+          "role": "Játékfejlesztő",
+          "description": "Alex a Quantum Vendetta játékmenetének kreatív ereje. A sci-fi és fantasy elemek ötvözése iránti szenvedélyével Alex lebilincselő pályákat, karaktereket és történetszálakat alkot, amelyek életre keltik egyedi világunkat."
+        },
+        "sam": {
+          "name": "Sam Lee",
+          "role": "Full-Stack Fejlesztő",
+          "description": "Sam az a technikai varázsló, aki a weboldalért, az indítóért és a háttér-infrastruktúráért felel. A játékosok zökkenőmentes élményét biztosítva mind a játékban, mind azon kívül, Sam szakértelme mindent zökkenőmentesen összeköt."
+        }
+      }
+    },
+    "overview": {
+      "title": "Quantum Vendetta: Egy új határvonal",
+      "paragraph1": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, amely zökkenőmentesen ötvözi a sci-fi technológiát a fantasztikus elemekkel. Egy olyan univerzumban játszódik, ahol a mágia és a fejlett technológia együtt létezik, a játékosok részletesen kidolgozott pályákon navigálnak, változatos ellenfelekkel szembenézve.",
+      "paragraph2": "Játékunk egyedi csavart ad a klasszikus lövöldözős műfajnak, ötvözve a jövőbeli fegyvereket és misztikus képességeket. Gazdag történetével és magával ragadó világépítésével a Quantum Vendetta felejthetetlen játékélményt ígér, amely kitágítja a 2D lövöldözős játékok határait."
+    },
+    "conceptArt": {
+      "title": "Koncepció Galéria",
+      "alt": "Koncepció Művészet"
+    },
+    "features": {
+      "title": "Főbb jellemzők",
+      "items": {
+        "action": {
+          "title": "Intenzív 2D Akció",
+          "description": "Gyors ütemű, felülnézeti lövöldözős játékmenet precíz irányítással"
+        },
+        "blend": {
+          "title": "Sci-fi találkozik a fantáziával",
+          "description": "A jövőbeli technológia és mágikus képességek egyedi keveréke"
+        },
+        "experience": {
+          "title": "Zökkenőmentes élmény",
+          "description": "Integrált webhely, indító és játék a zökkenőmentes játékosélményért"
+        }
+      }
+    },
+    "cta": {
+      "title": "Készen állsz csatlakozni a Vendettához?",
+      "button": "Kívánságlistára"
+    }
+  }
