@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,6 +10,7 @@ import { AuthProvider, useAuth } from './components/AuthContext'
 import Dashboard from './components/dashboard'
 import AboutPage from './components/about-page'
 import GameDemo from './components/game-demo'
+import { useTranslation } from 'react-i18next'
 
 // Navbar component
 const Navbar: React.FC = () => {
@@ -74,6 +77,7 @@ const Navbar: React.FC = () => {
 }
 
 // NavLinks component
+// @ts-ignore
 const NavLinks: React.FC<{ currentUser: any; logout: () => void; onClick?: () => void }> = ({ currentUser, logout, onClick }) => {
   const location = useLocation();
   const baseLinkClass = "w-full md:w-auto px-1 py-2 md:py-0 text-center relative text-lg font-medium transition-colors before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2 before:top-3 before:h-2 before:w-0 before:rounded-full before:bg-blue-500 before:blur-md before:transition-all before:duration-300 hover:text-blue-500 hover:before:w-5 hover:before:h-5 hover:before:bg-purple-500";
@@ -83,21 +87,21 @@ const NavLinks: React.FC<{ currentUser: any; logout: () => void; onClick?: () =>
   const getLinkClass = (path: string) => {
     return `${baseLinkClass} ${location.pathname === path ? activeLinkClass : inactiveLinkClass}`;
   };
-
+  const { t} = useTranslation("navbar");
   return (
     <>
       <Link to="/" className={getLinkClass("/")} onClick={onClick}>
-        Home
+        {t("home")}
+        
       </Link>
       <Link to="/about" className={getLinkClass("/about")} onClick={onClick}>
-        About
-      </Link>
-      <Link to="/demo" className={getLinkClass("/demo")} onClick={onClick}>
-        Demo
+        
+        {t("about")}
       </Link>
       {currentUser && (
         <Link to="/dashboard" className={getLinkClass("/dashboard")} onClick={onClick}>
-          Dashboard
+          
+          {t("dashboard")}
         </Link>
       )}
       <motion.div

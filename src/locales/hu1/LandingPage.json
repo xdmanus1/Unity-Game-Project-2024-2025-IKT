@@ -13,7 +13,7 @@
       },
       "strategy": {
         "title": "Stratégiai Mélység",
-        "description": "Gyors gondolkodással tervezd meg lépéseidet és járj túl ellenségeid eszén a túléléshez."
+        "description": "Tervezd meg lépéseidet és járj túl ellenségeid eszén a túléléshez."
       },
       "updates": {
         "title": "Rendszeres Frissítések",
@@ -26,11 +26,11 @@
     },
     "about": {
       "title": "A Quantum Vendettáról",
-      "description": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, amely ötvözi a pörgős akciót a régi stílusú mozgással. Egy lelkes indie játékfejlesztőként küldetésünk egy olyan játékmenet létrehozása, ahol a játékosnak kihívása legyen a tovább jutás.",
+      "description": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, amely ötvözi a pörgős akciót a stratégiai játékmenettel. Egy lelkes indie játékfejlesztő csapat alkotásaként küldetésünk egy felejthetetlen játékélmény nyújtása, amely újra és újra visszacsábít.",
       "features": {
-        "1": "Retro irányítás a fokozott kihívásért",
-        "2": "Ellenségek tömege, hogy ne legyen egyszerű a játék",
-        "3": "Pontszám, hogy a a játékos mindig visszatérjen a rekordja megdöntése érdekében"
+        "1": "Intuitív irányítás a gördülékeny játékmenetért",
+        "2": "Változatos ellenségtípusok és kihívást jelentő főellenségek",
+        "3": "Ranglisták és teljesítmények"
       }
     },
     "images": {

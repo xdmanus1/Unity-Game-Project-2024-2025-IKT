@@ -1,12 +1,19 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // auth.tsx
+// @ts-ignore
 import React, { useEffect, useRef, useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
+// @ts-ignore
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 import { Eye, EyeOff, Mail, UserPlus, LogIn, User } from 'lucide-react'
 import { useAuth } from './AuthContext'
 import { Alert, AlertDescription, AlertTitle } from './ui/alert'
+// @ts-ignore
 import { redirect, useNavigate } from 'react-router-dom'
+// @ts-ignore
+import { useTranslation } from 'react-i18next'
 
 // Firebase is already initialized in AuthContext, but if you need to use it here, you can import auth and db
 const auth = getAuth()
@@ -22,7 +29,9 @@ const LoginRegister: React.FC = () => {
   const [error, setError] = useState('')
   const [showAlert, setShowAlert] = useState(false) 
   const navigate = useNavigate();
+  // @ts-ignore
   const { currentUser } = useAuth()
+  const { t} = useTranslation("auth");
 
   
 
@@ -46,7 +55,7 @@ const LoginRegister: React.FC = () => {
       console.log('Success!')
     } catch (error) {
       setShowAlert(true)
-      setError("Sign in failed. Try again later!" )
+      setError(t("errorSignInWithGoogle"))
       console.error(error)
       setTimeout(() => {
         setShowAlert(false)
@@ -66,7 +75,7 @@ const LoginRegister: React.FC = () => {
       console.log('Google sign-in successful!')
     } catch (error) {
       setShowAlert(true)
-      setError("Sign in with Google failed. Try again later!" )
+      setError(t("errorSignInFailed"))
       console.error(error)
       setTimeout(() => {
         setShowAlert(false)
@@ -91,7 +100,7 @@ const LoginRegister: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
-              {isLogin ? 'Sign in to your account' : 'Create a new account'}
+              {isLogin ? t("signIn") : t("createNewAccount")}
             </h2>
           </motion.div>
         </AnimatePresence>
@@ -100,7 +109,7 @@ const LoginRegister: React.FC = () => {
             {!isLogin && (
               <div>
                 <label htmlFor="username" className="sr-only">
-                  Username
+                {t("username")}
                 </label>
                 <div className="relative">
                   <input
@@ -109,7 +118,7 @@ const LoginRegister: React.FC = () => {
                     type="text"
                     required
                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                    placeholder="Username"
+                    placeholder={t("username")}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
@@ -119,7 +128,7 @@ const LoginRegister: React.FC = () => {
             )}
             <div>
               <label htmlFor="email-address" className="sr-only">
-                Email address
+              {t("email")}
               </label>
               <div className="relative">
                 <input
@@ -129,7 +138,7 @@ const LoginRegister: React.FC = () => {
                   autoComplete="email"
                   required
                   className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 ${isLogin ? 'rounded-t-md' : ''} focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm`}
-                  placeholder="Email address"
+                  placeholder={t("email")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -138,7 +147,7 @@ const LoginRegister: React.FC = () => {
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+              {t("password")}
               </label>
               <div className="relative">
                 <input
@@ -148,7 +157,7 @@ const LoginRegister: React.FC = () => {
                   autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder={t("password")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -192,7 +201,7 @@ const LoginRegister: React.FC = () => {
                   <UserPlus className="h-5 w-5 text-blue-500 group-hover:text-blue-400" />
                 )}
               </span>
-              {isLogin ? 'Sign in' : 'Sign up'}
+              {isLogin ? t("signInButton") : t("signUpButton")}
             </motion.button>
           </div>
         </form>
@@ -203,7 +212,7 @@ const LoginRegister: React.FC = () => {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-gray-900 text-gray-300">Or continue with</span>
+              <span className="px-2 bg-gray-900 text-gray-300">{t("orContinueWith")}</span>
             </div>
           </div>
 
@@ -214,7 +223,7 @@ const LoginRegister: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             >
-              Sign in with Google
+              {t("signInWithGoogle")}
             </motion.button>
           </div>
         </div>
@@ -226,7 +235,7 @@ const LoginRegister: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             className="font-medium text-blue-600 hover:text-blue-500"
           >
-            {isLogin ? 'Need an account? Sign up' : 'Already have an account? Sign in'}
+            {isLogin ? t("needAnAccount") : t("createNewAccount")}
           </motion.button>
         </div>
     <AnimatePresence>
@@ -242,7 +251,7 @@ const LoginRegister: React.FC = () => {
           variant="destructive"
 
         >
-          <AlertTitle>Error</AlertTitle>
+          <AlertTitle>{t("error")}</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       </motion.div>

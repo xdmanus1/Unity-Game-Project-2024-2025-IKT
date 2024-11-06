@@ -1,6 +1,7 @@
 {
   "projects": {
-    "local-emulator": "blissful-acumen-403110"
+    "local-emulator": "blissful-acumen-403110",
+    "default": "blissful-acumen-403110"
   },
   "targets": {},
   "etags": {}

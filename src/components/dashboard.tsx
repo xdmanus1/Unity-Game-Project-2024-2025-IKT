@@ -1,10 +1,12 @@
+
 'use client'
 
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
-import { Crosshair, Trophy, Zap, Clock, Target, Star, Award } from 'lucide-react'
+import { Crosshair, Trophy, Clock, Award } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 interface Achievement {
   id: string;
@@ -63,7 +65,7 @@ const Dashboard: React.FC = () => {
   const [userStats, setUserStats] = useState<UserStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
+  const { t} = useTranslation("dashboard");
   useEffect(() => {
     const fetchUserStats = async () => {
       const auth = getAuth()
@@ -173,15 +175,15 @@ const Dashboard: React.FC = () => {
         animate={{ opacity: 1, y: 0}}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl font-bold text-center text-white mb-12">Player Dashboard</h1>
+        <h1 className="text-4xl font-bold text-center text-white mb-12">{t("dash")}</h1>
       </motion.div>
       
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <StatCard title="Total Score" value={userStats?.score || 0} icon={<Trophy size={24} />} />
-          <StatCard title="Kills" value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
+          <StatCard title={t("score")} value={userStats?.score || 0} icon={<Trophy size={24} />} />
+          <StatCard title={t("kill")} value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
           {/* <StatCard title="Accuracy" value={`${userStats?.accuracy || 0}%`} icon={<Target size={24} />} /> */}
-          <StatCard title="Time Played" value={`${userStats?.timePlayed || 0} hrs`} icon={<Clock size={24} />} />
+          <StatCard title={t("time")} value={`${userStats?.timePlayed || 0} hrs`} icon={<Clock size={24} />} />
           {/* <StatCard title="Highest Streak" value={userStats?.highestStreak || 0} icon={<Zap size={24} />} />
           <StatCard title="Level" value={userStats?.level || 1} icon={<Star size={24} />} /> */}
         </div>
@@ -193,10 +195,10 @@ const Dashboard: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
-        <h2 className="text-2xl font-semibold text-white mb-4">Achievements</h2>
+        <h2 className="text-2xl font-semibold text-white mb-4">{t("achi.title")}</h2>
         {userStats?.achievements.length === 0 ? (
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <p className="text-gray-400 text-lg">No achievements unlocked yet. Keep playing to earn achievements!</p>
+            <p className="text-gray-400 text-lg">{t("achi.notyet")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

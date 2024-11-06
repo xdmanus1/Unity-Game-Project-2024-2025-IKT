@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { useEffect, useState } from 'react'
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Link } from "react-router-dom"
-import { ChevronRight, Download, Star, Zap, Shield, Play, Gamepad2 } from "lucide-react"
+import { ChevronRight, Download, Star, Zap, Shield, Play } from "lucide-react"
 import { useTranslation } from 'react-i18next'
 
 const MotionImage = motion.img
-
+// @ts-ignore
 function AnimatedSection({ children, className = "" }) {
 
   const controls = useAnimation()
@@ -37,7 +38,7 @@ function AnimatedSection({ children, className = "" }) {
     </motion.div>
   )
 }
-
+// @ts-ignore
 function Button({ children, className, ...props }) {
   return (
     <button
@@ -120,12 +121,12 @@ export default function LandingPage() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button className="bg-blue-600 text-white hover:bg-blue-700 duration-200">
-                    {t('lp.hero.playButton')}
+                    {t('hero.playButton')}
                     <ChevronRight className="ml-2 h-4 w-4 inline" />
                   </Button>
                   <Button className="text-blue-400 border border-blue-400 hover:bg-blue-400 duration-300 hover:text-gray-900">
                     <Play className="mr-2 h-4 w-4 inline" />
-                    {t('lp.hero.trailerButton')}
+                    {t('hero.trailerButton')}
                   </Button>
                 </div>
               </AnimatedSection>
@@ -213,7 +214,7 @@ export default function LandingPage() {
             </Link>
             <button
             onClick={toggleLanguage}
-            className="px-4 py-2 text-sm rounded-md bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+            className="text-xs text-gray-400 hover:text-blue-400 transition-colors"
           >
             {i18n.language === 'en' ? 'Magyar' : 'English'}
           </button>

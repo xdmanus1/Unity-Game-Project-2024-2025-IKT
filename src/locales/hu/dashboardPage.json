@@ -1,0 +1,13 @@
+
+{
+    "dash": "Irányitópult",
+    "score": "Maximum pontszám",
+    "kill": "Ölések",
+    "time": "Játékidő",
+    "achi": {
+        "title": "Trófeák",
+        "notyet": "Még nincs feloldott trófea. Játssz tovább, hogy megszerezhesd a Trófeákat!",
+        "playButton": "Játék Indítása",
+        "trailerButton": "Előzetes Megtekintése"
+      }
+    }

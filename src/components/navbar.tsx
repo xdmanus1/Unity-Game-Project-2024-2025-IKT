@@ -1,8 +1,9 @@
+
 'use client'
 
 import { Link } from "react-router-dom"
-import { Gamepad2, LogIn } from "lucide-react"
-import React from "react"
+import { Gamepad2} from "lucide-react"
+
 
 export function Navbar() {
   return (

@@ -2,27 +2,27 @@
     "hero": {
       "title": "Quantum Vendetta",
       "subtitle": "Izgalmas felülnézeti 2D lövöldözős játék, amely ötvözi a sci-fit és a fantáziát",
-      "meetTeam": "Ismerd meg a csapatot"
+      "meetTeam": "Ismerd meg a csapatot!"
     },
     "team": {
       "title": "A Quantum Vendetta mögött álló kettős",
       "members": {
-        "alex": {
-          "name": "Alex Johnson",
+        "józsef": {
+          "name": "Balogh József Vendel",
           "role": "Játékfejlesztő",
-          "description": "Alex a Quantum Vendetta játékmenetének kreatív ereje. A sci-fi és fantasy elemek ötvözése iránti szenvedélyével Alex lebilincselő pályákat, karaktereket és történetszálakat alkot, amelyek életre keltik egyedi világunkat."
+          "description": "József a Quantum Vendetta játékmenetének kreatív ereje. A sci-fi és fantasy elemek ötvözése iránti szenvedélyével József lebilincselő posztapokaliptikus pályákat, menő karaktereket és minimalista történetszálakat alkotott, amelyek segítségével megszületett a Quantum Vendetta."
         },
-        "sam": {
-          "name": "Sam Lee",
+        "hunor": {
+          "name": "Karsa Hunor Ákos",
           "role": "Full-Stack Fejlesztő",
-          "description": "Sam az a technikai varázsló, aki a weboldalért, az indítóért és a háttér-infrastruktúráért felel. A játékosok zökkenőmentes élményét biztosítva mind a játékban, mind azon kívül, Sam szakértelme mindent zökkenőmentesen összeköt."
+          "description": "Hunor az a technikai varázsló, aki a weboldalért, az indítóért és a háttér-infrastruktúráért felel. A játékosok zökkenőmentes élményét biztosítva mind a játékban, mind azon kívül, Hunor szakértelme mindent zökkenőmentesen összeköt."
         }
       }
     },
     "overview": {
       "title": "Quantum Vendetta: Egy új határvonal",
-      "paragraph1": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, amely zökkenőmentesen ötvözi a sci-fi technológiát a fantasztikus elemekkel. Egy olyan univerzumban játszódik, ahol a mágia és a fejlett technológia együtt létezik, a játékosok részletesen kidolgozott pályákon navigálnak, változatos ellenfelekkel szembenézve.",
-      "paragraph2": "Játékunk egyedi csavart ad a klasszikus lövöldözős műfajnak, ötvözve a jövőbeli fegyvereket és misztikus képességeket. Gazdag történetével és magával ragadó világépítésével a Quantum Vendetta felejthetetlen játékélményt ígér, amely kitágítja a 2D lövöldözős játékok határait."
+      "p1": "A Quantum Vendetta egy izgalmas felülnézeti 2D lövöldözős játék, ahol a játékos célja, hogy minnél több ellenfelet megöljön mielőtt azok végeznek vele. Egy olyan univerzumban játszódik, ahol a mágia és a fejlett technológia együtt létezik, a játékosok legalább 1 rendkívül kidolgozott pályán játszhat, változatos ellenfelekkel szembenézve.",
+      "p2": "Játékunk egyedi csavart ad a klasszikus lövöldözős műfajnak, ötvözve az átlagos top-down lövöldözést és misztikus képességeket. Történet hiányával és magával ragadó világépítésével a Quantum Vendetta felejthetetlen játékélményt ígér, amely kitágítja a 2D lövöldözős játékok határait."
     },
     "conceptArt": {
       "title": "Koncepció Galéria",
@@ -33,7 +33,7 @@
       "items": {
         "action": {
           "title": "Intenzív 2D Akció",
-          "description": "Gyors ütemű, felülnézeti lövöldözős játékmenet precíz irányítással"
+          "description": "Gyors ütemű, felülnézeti lövöldözős játékmenet, sok tapasztalatott igénylő -retro- irányítással"
         },
         "blend": {
           "title": "Sci-fi találkozik a fantáziával",
@@ -46,7 +46,7 @@
       }
     },
     "cta": {
-      "title": "Készen állsz csatlakozni a Vendettához?",
-      "button": "Kívánságlistára"
+      "title": "Csatlakozz, hogy Bobnak segíts megölni az ellenséget!",
+      "button": "Letöltés"
     }
   }

@@ -1,0 +1,13 @@
+{
+    "signIn": "Jelentkezz be a fiókodba",
+    "email": "E-mail cím",
+    "password": "Jelszó",
+    "signInButton": "Bejelentkezés",
+    "orContinueWith": "Vagy folytasd ezzel:",
+    "signInWithGoogle": "Bejelentkezés Google-lal",
+    "needAnAccount": "Nincs fiókod? Regisztrálj",
+    "createNewAccount": "Hozz létre egy új fiókot",
+    "username": "Felhasználónév",
+    "signUpButton": "Regisztrálj",
+    "alreadyHaveAccount": "Már van fiókod? Jelentkezz be"
+}

@@ -1,6 +1,7 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Gamepad, Info, ChevronRight, X } from 'lucide-react';
+import { ChevronRight, X } from 'lucide-react';
 
 const GameDemo: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -1,0 +1,12 @@
+{
+    "dash": "Dashboard",
+    "score": "Total Score",
+    "kill": "Kills",
+    "time": "Playtime",
+    "achi": {
+        "title": "Trophies",
+        "notyet": "No trophies unlocked yet. Keep playing to earn trophies!",
+        "playButton": "Start Game",
+        "trailerButton": "View Trailer"
+    }
+}

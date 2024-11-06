@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Gamepad, Zap, Crosshair, ChevronDown, Github, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Code, Gamepad, Zap, Crosshair, ChevronDown, Mail, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-
+import hpfp from "./assets/hpfp.png"
 const AboutPage: React.FC = () => {
   const { t } = useTranslation("aboutPage")
   const fadeInUp = {
@@ -105,14 +105,18 @@ const AboutPage: React.FC = () => {
                 role: t('team.members.józsef.role'), 
                 image: "./src/assets/placeholder.svg?height=400&width=600vv",
                 description: t('team.members.józsef.description'),
-                icon: <Gamepad className="w-8 h-8 text-blue-400" />
+                icon: <Gamepad className="w-8 h-8 text-blue-400" />,
+                linkdc: "www.example.com",
+                linkit: "www.example.com"
               },
               { 
                 name: t('team.members.hunor.name'), 
                 role: t('team.members.hunor.role'), 
-                image: "./src/assets/placeholder.svg?height=400&width=600vv",
+                image: hpfp,
                 description: t('team.members.hunor.description'),
-                icon: <Code className="w-8 h-8 text-blue-400" />
+                icon: <Code className="w-8 h-8 text-blue-400" />,
+                linkdc: "www.example.com",
+                linkit: "www.example.com"
               },
             ].map((member, index) => (
               <motion.div
@@ -135,8 +139,8 @@ const AboutPage: React.FC = () => {
                   <p className="text-blue-400 text-lg mb-4">{member.role}</p>
                   <p className="text-gray-300 mb-4">{member.description}</p>
                   <div className="flex space-x-4">
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                      <Github className="w-6 h-6" />
+                    <a href={member.linkdc} className="text-gray-400 hover:text-white transition-colors">
+                      <Mail className="w-6 h-6" />
                     </a>
                     <a href="#" className="text-gray-400 hover:text-white transition-colors">
                       <Linkedin className="w-6 h-6" />
@@ -217,13 +221,13 @@ const AboutPage: React.FC = () => {
               animate="animate"
             >
               {[
-                { icon: <Crosshair size={40} />, title: t("feature.items.action.title"), description: "Fast-paced, top-down shooter gameplay with precise controls" },
-                { icon: <Zap size={40} />, title: "Sci-Fi Meets Fantasy", description: "Unique blend of futuristic technology and magical abilities" },
-                { icon: <Code size={40} />, title: "Seamless Experience", description: "Integrated website, launcher, and game for a smooth player journey" },
+                { icon: <Crosshair size={40} />, title: t("features.items.action.title"), description: t("features.items.action.description") },
+                { icon: <Zap size={40} />, title: t("features.items.blend.title"), description: t("features.items.blend.description")  },
+                { icon: <Code size={40} />, title: t("features.items.experience.title"), description: t("features.items.experience.description")  },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-700 p-6 rounded-lg shadow-lg text-center"
+                  className="bg-gray-800 p-6 rounded-lg shadow-lg text-center"
                   variants={fadeInUp}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
