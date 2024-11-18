@@ -48,5 +48,7 @@
     "cta": {
       "title": "Ready to Join the Vendetta?",
       "button": "Play Now"
-    }
+    },
+    "download": "Download",
+    "downloading": "Letöltés folyamatban"
   }

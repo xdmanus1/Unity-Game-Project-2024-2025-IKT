@@ -48,5 +48,7 @@
     "cta": {
       "title": "Csatlakozz, hogy Bobnak segíts megölni az ellenséget!",
       "button": "Letöltés"
-    }
+    },
+    "download": "Letöltés",
+    "downloading": "Letöltés folyamatban"
   }

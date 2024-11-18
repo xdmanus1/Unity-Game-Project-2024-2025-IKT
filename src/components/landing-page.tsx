@@ -5,6 +5,8 @@ import { useInView } from "react-intersection-observer"
 import { Link } from "react-router-dom"
 import { ChevronRight, Download, Star, Zap, Shield, Play } from "lucide-react"
 import { useTranslation } from 'react-i18next'
+import test from './assets/placeholder.svg'
+
 
 const MotionImage = motion.img
 // @ts-ignore
@@ -100,8 +102,8 @@ export default function LandingPage() {
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('./src/assets/placeholder.svg?height=600&width=600vv')`,
-          transform: `translateY(${scrollY * 0.5}px)`,
+          backgroundImage: test,
+          transform: `translateY(${scrollY * 0.0000001}px)`,
         }}
       />
       <div className="absolute inset-0 bg-gray-900 bg-opacity-70 z-10" />
@@ -135,7 +137,7 @@ export default function LandingPage() {
                   alt={t('images.gameplay')}
                   className="aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg shadow-blue-500/20"
                   height="400"
-                  src="./src/assets/placeholder.svg?height=400&width=600vv"
+                  src={test}
                   width="600"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
@@ -192,7 +194,7 @@ export default function LandingPage() {
                   alt={t('images.screenshot')}
                   className="aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg shadow-blue-500/20"
                   height="400"
-                  src="./src/assets/placeholder.svg?height=400&width=600vv"
+                  src={test}
                   width="600"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
@@ -202,25 +204,6 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      <footer className="w-full py-6 bg-gray-900 border-t border-gray-800 relative z-20">
-        <div className="container flex flex-col gap-2 sm:flex-row items-center px-4 md:px-6">
-          <p className="text-xs text-gray-400">{t('footer.copyright')}</p>
-          <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <Link to="/terms" className="text-xs text-gray-400 hover:text-blue-400 transition-colors">
-              {t('footer.terms')}
-            </Link>
-            <Link to="/privacy" className="text-xs text-gray-400 hover:text-blue-400 transition-colors">
-              {t('footer.privacy')}
-            </Link>
-            <button
-            onClick={toggleLanguage}
-            className="text-xs text-gray-400 hover:text-blue-400 transition-colors"
-          >
-            {i18n.language === 'en' ? 'Magyar' : 'English'}
-          </button>
-          </nav>
-        </div>
-      </footer>
     </div>
   )
 }

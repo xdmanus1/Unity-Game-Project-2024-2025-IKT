@@ -209,14 +209,14 @@ const LoginRegister: React.FC = () => {
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              {/* <div className="w-full border-t border-gray-300"></div> */}
             </div>
-            <div className="relative flex justify-center text-sm">
+            {/* <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-gray-900 text-gray-300">{t("orContinueWith")}</span>
-            </div>
+            </div> */}
           </div>
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <motion.button
               onClick={handleGoogleSignIn}
               whileHover={{ scale: 1.05 }}
@@ -225,7 +225,7 @@ const LoginRegister: React.FC = () => {
             >
               {t("signInWithGoogle")}
             </motion.button>
-          </div>
+          </div> */}
         </div>
 
         <div className="text-center mt-4">

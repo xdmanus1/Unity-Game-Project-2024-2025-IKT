@@ -4,6 +4,8 @@ import { useInView } from 'react-intersection-observer'
 import { Code, Gamepad, Zap, Crosshair, ChevronDown, Mail, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import hpfp from "./assets/hpfp.png"
+import GitHubReleaseDownloader from './download';
+
 const AboutPage: React.FC = () => {
   const { t } = useTranslation("aboutPage")
   const fadeInUp = {
@@ -257,14 +259,7 @@ const AboutPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <motion.a
-                href="#"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                                          {t("cta.button")}
-                                          </motion.a>
+                          <GitHubReleaseDownloader/>
             </motion.div>
           </div>
         </section>
