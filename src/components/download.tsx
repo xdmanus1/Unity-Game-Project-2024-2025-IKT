@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Download, Loader2, AlertCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Download, Loader2, AlertCircle, Check } from 'lucide-react';
 import { useToast } from './hooks/use-toast';
 import { useTranslation } from 'react-i18next';
 import { Alert, AlertDescription } from './ui/alert';
@@ -7,14 +7,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const GitHubReleaseDownloader = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
   const { toast } = useToast();
-  const { t } = useTranslation("aboutPage");
+  const { t } = useTranslation('aboutPage');
   const [showAlert, setShowAlert] = useState(false);
 
   const downloadLatestRelease = async () => {
     setIsLoading(true);
     setError('');
+    setIsSuccess(false);
 
     try {
       const owner = 'xdmanus1';
@@ -30,7 +32,7 @@ const GitHubReleaseDownloader = () => {
 
       const release = await response.json();
 
-      const exeAsset = release.assets.find((asset) =>
+      const exeAsset = release.assets.find((asset: { name: string }) =>
         asset.name.toLowerCase().endsWith('.exe')
       );
 
@@ -48,17 +50,19 @@ const GitHubReleaseDownloader = () => {
       link.click();
       document.body.removeChild(link);
 
+      setIsSuccess(true);
+
       toast({
-        title: "Download Started",
-        description: "Your download should begin shortly.",
+        title: 'Download Successful',
+        description: 'The file has been downloaded successfully.',
       });
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An error occurred';
       setError(errorMessage);
       setShowAlert(true);
       toast({
-        variant: "destructive",
-        title: "Download Failed",
+        variant: 'destructive',
+        title: 'Download Failed',
         description: errorMessage,
       });
     } finally {
@@ -68,7 +72,7 @@ const GitHubReleaseDownloader = () => {
 
   useEffect(() => {
     if (showAlert) {
-      const timer = setTimeout(() => setShowAlert(false), 5000); // Auto-hide after 15s
+      const timer = setTimeout(() => setShowAlert(false), 5000); // Auto-hide after 5s
       return () => clearTimeout(timer);
     }
   }, [showAlert]);
@@ -94,11 +98,18 @@ const GitHubReleaseDownloader = () => {
 
       <motion.button
         onClick={downloadLatestRelease}
-        disabled={isLoading}
+        disabled={isLoading || isSuccess}
         className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        whileHover={{ scale: isLoading ? 1 : 1.05 }}
+        whileHover={{ scale: isLoading || isSuccess ? 1 : 1.05 }}
       >
-        {isLoading ? <Loader2 className="animate-spin" /> : <Download />} {t("download")}
+        {isLoading ? (
+          <Loader2 className="animate-spin" />
+        ) : isSuccess ? (
+          <Check />
+        ) : (
+          <Download />
+        )}
+        {isLoading ? t('downloading') : isSuccess ? t('downloaded') : t('download')}
       </motion.button>
     </div>
   );

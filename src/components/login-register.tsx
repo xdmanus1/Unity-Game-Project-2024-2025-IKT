@@ -3,7 +3,7 @@
 // auth.tsx
 // @ts-ignore
 import React, { useEffect, useRef, useState } from 'react'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 // @ts-ignore
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next'
 // Firebase is already initialized in AuthContext, but if you need to use it here, you can import auth and db
 const auth = getAuth()
 const db = getFirestore()
-const googleProvider = new GoogleAuthProvider()
+// const googleProvider = new GoogleAuthProvider()
 
 const LoginRegister: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -64,24 +64,24 @@ const LoginRegister: React.FC = () => {
     }
   }
 
-  const handleGoogleSignIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider)
-      // Store username in Firestore (using email as username for Google sign-in)
-      await setDoc(doc(db, "users", result.user.uid), {
-        username: result.user.email?.split('@')[0],
-        email: result.user.email
-      })
-      console.log('Google sign-in successful!')
-    } catch (error) {
-      setShowAlert(true)
-      setError(t("errorSignInFailed"))
-      console.error(error)
-      setTimeout(() => {
-        setShowAlert(false)
-      }, 2000);
-    }
-  }
+  // const handleGoogleSignIn = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, googleProvider)
+  //     // Store username in Firestore (using email as username for Google sign-in)
+  //     await setDoc(doc(db, "users", result.user.uid), {
+  //       username: result.user.email?.split('@')[0],
+  //       email: result.user.email
+  //     })
+  //     console.log('Google sign-in successful!')
+  //   } catch (error) {
+  //     setShowAlert(true)
+  //     setError(t("errorSignInFailed"))
+  //     console.error(error)
+  //     setTimeout(() => {
+  //       setShowAlert(false)
+  //     }, 2000);
+  //   }
+  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">

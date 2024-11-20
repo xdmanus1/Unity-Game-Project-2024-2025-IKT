@@ -14,8 +14,8 @@
         },
         "hunor": {
           "name": "Karsa Hunor Ákos",
-          "role": "Full-Stack Fejlesztő",
-          "description": "Hunor az a technikai varázsló, aki a weboldalért, az indítóért és a háttér-infrastruktúráért felel. A játékosok zökkenőmentes élményét biztosítva mind a játékban, mind azon kívül, Hunor szakértelme mindent zökkenőmentesen összeköt."
+          "role": "Frontend és alkalmazás Fejlesztő",
+          "description": "Hunor, aki a weboldal, az indító és a letöltő működéséért felel, kulcsszerepet játszik a projekt zökkenőmentes működésében. Gondoskodik arról, hogy a játékosok élménye mind a játékban, mind azon kívül gördülékeny legyen, miközben biztosítja az eszközök és rendszerek megbízhatóságát és hatékonyságát."
         }
       }
     },
@@ -50,5 +50,6 @@
       "button": "Letöltés"
     },
     "download": "Letöltés",
-    "downloading": "Letöltés folyamatban"
+    "downloading": "Letöltés folyamatban",
+    "downloaded": "Letöltve"
   }

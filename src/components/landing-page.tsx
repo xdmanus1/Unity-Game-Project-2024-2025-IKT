@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from 'react'
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Link } from "react-router-dom"
 import { ChevronRight, Download, Star, Zap, Shield, Play } from "lucide-react"
 import { useTranslation } from 'react-i18next'
 import test from './assets/placeholder.svg'
+import { useNavigate } from 'react-router-dom';
 
 
 const MotionImage = motion.img
 // @ts-ignore
 function AnimatedSection({ children, className = "" }) {
+
+
 
   const controls = useAnimation()
   const [ref, inView] = useInView({
@@ -54,12 +57,17 @@ function Button({ children, className, ...props }) {
 
 export default function LandingPage() {
 
-    const { t, i18n } = useTranslation("landingPage");
+  const navigate = useNavigate(); 
+
+  const navigateToAbout = () => {
+    navigate('/about#download');
+  };
+  const openYouTubeVideo = () => {
+    // Open the YouTube video in a new tab
+    window.open('https://www.youtube.com/watch?v=yourVideoId', '_blank');
+  };
+  const { t } = useTranslation("landingPage");
   
-      const toggleLanguage = () => {
-          const newLang = i18n.language === 'en' ? 'hu' : 'en';
-          i18n.changeLanguage(newLang);
-        };
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
@@ -122,11 +130,14 @@ export default function LandingPage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-blue-600 text-white hover:bg-blue-700 duration-200">
-                    {t('hero.playButton')}
-                    <ChevronRight className="ml-2 h-4 w-4 inline" />
-                  </Button>
-                  <Button className="text-blue-400 border border-blue-400 hover:bg-blue-400 duration-300 hover:text-gray-900">
+                <Button
+      className="bg-blue-600 text-white hover:bg-blue-700 duration-200"
+      onClick={navigateToAbout}
+    >
+      {t('hero.playButton')}
+      <ChevronRight className="ml-2 h-4 w-4 inline" />
+    </Button>
+                  <Button className="text-blue-400 border border-blue-400 hover:bg-blue-400 duration-300 hover:text-gray-900" onClick={openYouTubeVideo}>
                     <Play className="mr-2 h-4 w-4 inline" />
                     {t('hero.trailerButton')}
                   </Button>

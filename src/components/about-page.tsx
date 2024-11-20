@@ -1,10 +1,150 @@
 import React, { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Gamepad, Zap, Crosshair, ChevronDown, Mail, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Code, Gamepad, Zap, Crosshair, ChevronDown,  ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import hpfp from "./assets/hpfp.png"
+import jpfp from "./assets/jpfp.jpg"
+import cart1 from "./assets/cart1.jpg"
+import gameplay from "./assets/gameplay.png"
+import placeholder from "./assets/placeholder.svg"
 import GitHubReleaseDownloader from './download';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faDiscord } from "@fortawesome/free-brands-svg-icons"
+import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import { Badge } from "./ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+
+interface Member {
+  name: string;
+  role: string;
+  image: string;
+  description: string;
+  icon: JSX.Element;
+  email: string;
+  discordUsername: string;
+}
+
+const TeamMemberCard = ({ member, index }: { member: Member; index: number }) => {
+
+  const controls = useAnimation()
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
+  return (
+    
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 50 }
+      }}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+      className="bg-gray-700 rounded-lg overflow-hidden shadow-lg"
+      whileHover={{ 
+        scale: 1.05, 
+        transition: { duration: 0.3 } 
+      }}
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-64 object-cover"
+      />
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
+            {member.icon}
+            <h3 className="text-2xl font-semibold ml-2 text-white">{member.name}</h3>
+          </div>
+          <Badge variant="secondary" className="text-sm font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300">
+            {member.role}
+          </Badge>
+        </div>
+        <p className="text-gray-300 mb-6">{member.description}</p>
+        <div className="space-y-3">
+          <div className="flex items-center space-x-3 bg-gray-600 rounded-full py-2 px-4 transition-colors duration-300 hover:bg-gray-500">
+            <FontAwesomeIcon icon={faDiscord} className="w-5 h-5 text-blue-400" />
+            <span className="text-white text-sm">{member.discordUsername}</span>
+          </div>
+          <a 
+            href={`mailto:${member.email}`}
+            className="flex items-center space-x-3 bg-gray-600 rounded-full py-2 px-4 transition-colors duration-300 hover:bg-gray-500"
+          >
+            <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-blue-400" />
+            <span className="text-white text-sm">{member.email}</span>
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+interface Feature {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
+const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 50 }
+      }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+    >
+      <motion.div
+        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+      >
+        <Card className="bg-gray-800 border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardHeader>
+            <motion.div 
+              className="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center text-white"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              {feature.icon}
+            </motion.div>
+            <CardTitle className="text-xl font-semibold text-center text-white">
+              {feature.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-300 text-center">{feature.description}</p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 
 const AboutPage: React.FC = () => {
   const { t } = useTranslation("aboutPage")
@@ -22,14 +162,43 @@ const AboutPage: React.FC = () => {
     }
   }
 
+  
+
   const scrollToTeam = () => {
     const teamSection = document.getElementById('team')
     if (teamSection) {
       teamSection.scrollIntoView({ behavior: 'smooth' })
     }
   }
+  const teamMembers = [
+    { 
+      name: t('team.members.józsef.name'), 
+      role: t('team.members.józsef.role'), 
+      image: jpfp,
+      description: t('team.members.józsef.description'),
+      icon: <Gamepad className="w-8 h-8 text-blue-400" />,
+      email: "baloghjozsefvendel@gmail.com",
+      discordUsername: "zsirafkutya"
+    },
+    { 
+      name: t('team.members.hunor.name'), 
+      role: t('team.members.hunor.role'), 
+      image: hpfp,
+      description: t('team.members.hunor.description'),
+      icon: <Code className="w-8 h-8 text-blue-400" />,
+      email: "xdmanus.dev@gmail.com",
+      discordUsername: "xdmanus"
+    },
+  ] as const;
+  
+  const features = [
+    { icon: <Crosshair size={40} />, title: t("features.items.action.title"), description: t("features.items.action.description") },
+    { icon: <Zap size={40} />, title: t("features.items.blend.title"), description: t("features.items.blend.description") },
+    { icon: <Code size={40} />, title: t("features.items.experience.title"), description: t("features.items.experience.description") },
+  ]
 
   return (
+    
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center">
@@ -40,7 +209,7 @@ const AboutPage: React.FC = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src="./src/assets/placeholder.svg?height=400&width=600vv"
+            src={placeholder + "?height=400&width=600vv"}
             alt="Quantum Vendetta Background"
             className="w-full h-full object-cover"
           />
@@ -88,73 +257,22 @@ const AboutPage: React.FC = () => {
 
       {/* Team Section */}
       <section id="team" className="py-20 bg-gray-800">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="text-4xl font-bold text-center mb-12"
-            {...fadeInUp}
-          >
-            {t('team.title')}
-          </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-12"
-            variants={staggerChildren}
-            initial="initial"
-            animate="animate"
-          >
-            {[
-              { 
-                name: t('team.members.józsef.name'), 
-                role: t('team.members.józsef.role'), 
-                image: "./src/assets/placeholder.svg?height=400&width=600vv",
-                description: t('team.members.józsef.description'),
-                icon: <Gamepad className="w-8 h-8 text-blue-400" />,
-                linkdc: "www.example.com",
-                linkit: "www.example.com"
-              },
-              { 
-                name: t('team.members.hunor.name'), 
-                role: t('team.members.hunor.role'), 
-                image: hpfp,
-                description: t('team.members.hunor.description'),
-                icon: <Code className="w-8 h-8 text-blue-400" />,
-                linkdc: "www.example.com",
-                linkit: "www.example.com"
-              },
-            ].map((member, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-700 rounded-lg overflow-hidden shadow-lg"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    {member.icon}
-                    <h3 className="text-2xl font-semibold ml-2">{member.name}</h3>
-                  </div>
-                  <p className="text-blue-400 text-lg mb-4">{member.role}</p>
-                  <p className="text-gray-300 mb-4">{member.description}</p>
-                  <div className="flex space-x-4">
-                    <a href={member.linkdc} className="text-gray-400 hover:text-white transition-colors">
-                      <Mail className="w-6 h-6" />
-                    </a>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                      <Linkedin className="w-6 h-6" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-white"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {t('team.title')}
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {teamMembers.map((member, index) => (
+            <TeamMemberCard key={index} member={member} index={index} />
+          ))}
         </div>
-      </section>
-
+      </div>
+    </section>
       {/* Game Overview Section */}
       <AnimatedSection>
         <section className="py-20 bg-gray-900">
@@ -173,7 +291,7 @@ const AboutPage: React.FC = () => {
             >
               <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeInUp}>
                 <img
-                  src="./src/assets/placeholder.svg?height=400&width=600vv"
+                  src={gameplay}
                   alt="Quantum Vendetta Gameplay"
                   className="rounded-lg shadow-2xl"
                 />
@@ -207,46 +325,26 @@ const AboutPage: React.FC = () => {
       </AnimatedSection>
 
       {/* Features Section */}
-      <AnimatedSection>
-        <section className="py-20 bg-gray-900">
-          <div className="container mx-auto px-4">
-            <motion.h2
-              className="text-4xl font-bold text-center mb-12"
-              {...fadeInUp}
-            >
-                                          {t("features.title")}
-            </motion.h2>
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              variants={staggerChildren}
-              initial="initial"
-              animate="animate"
-            >
-              {[
-                { icon: <Crosshair size={40} />, title: t("features.items.action.title"), description: t("features.items.action.description") },
-                { icon: <Zap size={40} />, title: t("features.items.blend.title"), description: t("features.items.blend.description")  },
-                { icon: <Code size={40} />, title: t("features.items.experience.title"), description: t("features.items.experience.description")  },
-              ].map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gray-800 p-6 rounded-lg shadow-lg text-center"
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="text-blue-500 mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-300">{feature.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-      </AnimatedSection>
-
+      <section className="py-20 bg-gray-900">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-white"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {t("features.title")}
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
       {/* Call to Action */}
       <AnimatedSection>
-        <section className="py-20 bg-gray-800">
+        <section className="py-20 bg-gray-800" id="download">
           <div className="container mx-auto px-4 text-center">
             <motion.h2
               className="text-4xl font-bold mb-8"
@@ -300,10 +398,10 @@ const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) 
 const ConceptArtCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const images = [
-    "./src/assets/placeholder.svg?height=400&width=600vv",
-    "./src/assets/placeholder.svg?height=400&width=600vv",
-    "./src/assets/placeholder.svg?height=400&width=600vv",
-    "./src/assets/placeholder.svg?height=400&width=600vv",
+    cart1,
+    placeholder + "?height=400&width=600vv",
+    placeholder + "?height=400&width=600vv",
+    placeholder + "?height=400&width=600vv",
   ]
 
   const nextSlide = () => {
