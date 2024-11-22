@@ -10,6 +10,8 @@ import endash from './locales/en/dashboardPage.json';
 import hudash from './locales/hu/dashboardPage.json';
 import huauth from './locales/hu/LoginPage.json';
 import enauth from './locales/en/LoginPage.json';
+import endownload from './locales/en/DownloadPage.json';
+import hudownload from './locales/en/DownloadPage.json';
 
 i18n
   .use(initReactI18next)
@@ -22,6 +24,7 @@ i18n
         navbar: ennavbar,
         dashboard: endash,
         auth: enauth,
+        download: endownload,
       },
       hu: {
         translation: huLandingPage,
@@ -30,6 +33,7 @@ i18n
         navbar: hunavbar,
         dashboard: hudash,
         auth: huauth,
+        download: hudownload,
       },
     },
     lng: 'hu',  // Set Hungarian as the initial language

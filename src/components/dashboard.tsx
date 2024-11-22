@@ -144,7 +144,7 @@ const Dashboard: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <StatCard title={t('score')} value={userStats?.maxscore || 0} icon={<Trophy size={24} />} />
-          <StatCard title={t('kills')} value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
+          <StatCard title={t('kill')} value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
           <StatCard
             title={t('time')}
             value={`${parseHoursPlayed(userStats?.hoursplayed || '0h 0m').toFixed(1)} hrs`}

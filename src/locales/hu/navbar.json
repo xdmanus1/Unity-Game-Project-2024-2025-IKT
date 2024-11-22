@@ -3,5 +3,8 @@
     "home": "Főoldal",
     "about": "Rólunk",
     "demo": "Demó",
-    "dashboard": "Irányítópult"
+    "dashboard": "Irányítópult",
+    "download": "Letöltés",
+    "login": "Bejelentkezés",
+    "logout": "Kijelentkezés"
 }

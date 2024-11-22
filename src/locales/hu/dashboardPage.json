@@ -6,7 +6,8 @@
     "time": "Játékidő",
     "achi": {
         "title": "Trófeák",
-        "notyet": "Még nincs feloldott trófea. Játssz tovább, hogy megszerezhesd a Trófeákat!",
+        "notyet": "A Trófeák még nem elérhetőek!",
+        "aha": "Még nincs feloldott trófea. Játssz tovább, hogy megszerezhesd a Trófeákat!",
         "playButton": "Játék Indítása",
         "trailerButton": "Előzetes Megtekintése"
       }

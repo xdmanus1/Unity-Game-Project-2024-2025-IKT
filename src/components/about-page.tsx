@@ -8,12 +8,13 @@ import jpfp from "./assets/jpfp.jpg"
 import cart1 from "./assets/cart1.jpg"
 import gameplay from "./assets/gameplay.png"
 import placeholder from "./assets/placeholder.svg"
-import GitHubReleaseDownloader from './download';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faDiscord } from "@fortawesome/free-brands-svg-icons"
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import { Badge } from "./ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { useNavigate } from 'react-router-dom'
+import { Button } from './ui/button'
 
 interface Member {
   name: string;
@@ -161,7 +162,11 @@ const AboutPage: React.FC = () => {
       }
     }
   }
+  const navigate = useNavigate(); 
 
+  const navigateToAbout = () => {
+    navigate('/download#top');
+  };
   
 
   const scrollToTeam = () => {
@@ -357,7 +362,13 @@ const AboutPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-                          <GitHubReleaseDownloader/>
+                        <Button
+      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      onClick={navigateToAbout}
+    >
+      {t('cta.button')}
+      <ChevronRight className="ml-2 h-6 w-6 inline" />
+    </Button>
             </motion.div>
           </div>
         </section>
