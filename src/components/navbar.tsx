@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gamepad2, LogIn, LogOut, Menu, X } from 'lucide-react'
+import {  LogIn, LogOut, Menu, X } from 'lucide-react'
 import { useAuth } from './AuthContext'
 import { useTranslation } from 'react-i18next'
-
 const NavLinks: React.FC<{ 
   currentUser: any; 
   logout: () => void; 
@@ -74,9 +73,14 @@ const Navbar: React.FC = () => {
   return (
     <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full bg-gray-900 bg-opacity-90 backdrop-blur-md z-50 border-b border-gray-800">
       <Link to="/" className="flex items-center justify-center">
-        <Gamepad2 className="h-6 w-6 text-blue-500" />
-        <span className="ml-2 text-lg font-bold text-white">Quantum Vendetta</span>
-      </Link>
+  <img
+    src="/bob_head.png" // Replace with your actual path
+    alt="Quantum Vendetta Logo"
+    className="w-10"
+  />
+  <span className="ml-2 text-lg font-bold text-white">Quantum Vendetta</span>
+</Link>
+
       <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
         <NavLinks currentUser={currentUser} logout={logout} />
       </nav>

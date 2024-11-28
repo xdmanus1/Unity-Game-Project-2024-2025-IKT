@@ -24,13 +24,13 @@ interface UserStats {
 }
 
 // Utility function to parse hoursplayed
-const parseHoursPlayed = (time: string): number => {
-  const hoursMatch = time.match(/(\d+)h/)
-  const minutesMatch = time.match(/(\d+)m/)
-  const hours = hoursMatch ? parseInt(hoursMatch[1], 10) : 0
-  const minutes = minutesMatch ? parseInt(minutesMatch[1], 10) : 0
-  return hours + minutes / 60
-}
+// const parseHoursPlayed = (time: string): number => {
+//   const hoursMatch = time.match(/(\d+)h/)
+//   const minutesMatch = time.match(/(\d+)m/)
+//   const hours = hoursMatch ? parseInt(hoursMatch[1], 10) : 0
+//   const minutes = minutesMatch ? parseInt(minutesMatch[1], 10) : 0
+//   return hours + minutes / 60
+// }
 
 const StatCard: React.FC<{ title: string; value: number | string; icon: React.ReactNode }> = ({ title, value, icon }) => (
   <motion.div
@@ -147,7 +147,7 @@ const Dashboard: React.FC = () => {
           <StatCard title={t('kill')} value={userStats?.kills || 0} icon={<Crosshair size={24} />} />
           <StatCard
             title={t('time')}
-            value={`${parseHoursPlayed(userStats?.hoursplayed || '0h 0m').toFixed(1)} hrs`}
+            value={userStats?.hoursplayed ?? "0h 0m"}
             icon={<Clock size={24} />}
           />
         </div>

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Gamepad, Zap, Crosshair, ChevronDown,  ChevronLeft, ChevronRight } from 'lucide-react'
+import { Code, Gamepad, Zap, Crosshair, ChevronDown,   ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import hpfp from "./assets/hpfp.png"
 import jpfp from "./assets/jpfp.jpg"
-import cart1 from "./assets/cart1.jpg"
-import gameplay from "./assets/gameplay.png"
-import placeholder from "./assets/placeholder.svg"
+import map from "./assets/map.png"
+import bg1 from "./assets/bg1.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faDiscord } from "@fortawesome/free-brands-svg-icons"
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons"
@@ -124,7 +123,7 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
       <motion.div
         whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
       >
-        <Card className="bg-gray-800 border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <Card className="bg-gray-900 border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
           <CardHeader>
             <motion.div 
               className="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center text-white"
@@ -182,7 +181,7 @@ const AboutPage: React.FC = () => {
       image: jpfp,
       description: t('team.members.józsef.description'),
       icon: <Gamepad className="w-8 h-8 text-blue-400" />,
-      email: "baloghjozsefvendel@gmail.com",
+      email: "jozsefvendelbalogh@gmail.com",
       discordUsername: "zsirafkutya"
     },
     { 
@@ -214,9 +213,9 @@ const AboutPage: React.FC = () => {
           className="absolute inset-0 z-0"
         >
           <img
-            src={placeholder + "?height=400&width=600vv"}
+            src={bg1}
             alt="Quantum Vendetta Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover bluring "
           />
           <div className="absolute inset-0 bg-black opacity-50" />
         </motion.div>
@@ -296,7 +295,7 @@ const AboutPage: React.FC = () => {
             >
               <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeInUp}>
                 <img
-                  src={gameplay}
+                  src={map}
                   alt="Quantum Vendetta Gameplay"
                   className="rounded-lg shadow-2xl"
                 />
@@ -315,7 +314,7 @@ const AboutPage: React.FC = () => {
       </AnimatedSection>
 
       {/* Concept Art Carousel */}
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <section className="py-20 bg-gray-800">
           <div className="container mx-auto px-4">
             <motion.h2
@@ -327,10 +326,10 @@ const AboutPage: React.FC = () => {
             <ConceptArtCarousel />
           </div>
         </section>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-4xl font-bold text-center mb-12 text-white"
@@ -349,7 +348,7 @@ const AboutPage: React.FC = () => {
     </section>
       {/* Call to Action */}
       <AnimatedSection>
-        <section className="py-20 bg-gray-800" id="download">
+        <section className="py-20 bg-gray-900" id="download">
           <div className="container mx-auto px-4 text-center">
             <motion.h2
               className="text-4xl font-bold mb-8"
@@ -406,59 +405,59 @@ const AnimatedSection: React.FC<{ children: React.ReactNode }> = ({ children }) 
   )
 }
 
-const ConceptArtCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const images = [
-    cart1,
-    placeholder + "?height=400&width=600vv",
-    placeholder + "?height=400&width=600vv",
-    placeholder + "?height=400&width=600vv",
-  ]
+// const ConceptArtCarousel: React.FC = () => {
+//   const [currentIndex, setCurrentIndex] = useState(0)
+//   const images = [
+//     cart1,
+//     placeholder + "?height=400&width=600vv",
+//     placeholder + "?height=400&width=600vv",
+//     placeholder + "?height=400&width=600vv",
+//   ]
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
-  }
+//   const nextSlide = () => {
+//     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+//   }
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
-  }
+//   const prevSlide = () => {
+//     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
+//   }
 
-  return (
-    <div className="relative w-full max-w-3xl mx-auto">
-      <motion.div
-        className="overflow-hidden rounded-lg shadow-2xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.img
-          key={currentIndex}
-          src={images[currentIndex]}
-          alt={`Concept Art ${currentIndex + 1}`}
-          className="w-full h-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-      </motion.div>
-      <motion.button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-        onClick={prevSlide}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <ChevronLeft size={24} />
-      </motion.button>
-      <motion.button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-        onClick={nextSlide}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <ChevronRight size={24} />
-      </motion.button>
-    </div>
-  )
-}
+//   return (
+//     <div className="relative w-full max-w-3xl mx-auto">
+//       <motion.div
+//         className="overflow-hidden rounded-lg shadow-2xl"
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         transition={{ duration: 0.5 }}
+//       >
+//         <motion.img
+//           key={currentIndex}
+//           src={images[currentIndex]}
+//           alt={`Concept Art ${currentIndex + 1}`}
+//           className="w-full h-auto"
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: 1 }}
+//           transition={{ duration: 0.5 }}
+//         />
+//       </motion.div>
+//       <motion.button
+//         className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+//         onClick={prevSlide}
+//         whileHover={{ scale: 1.1 }}
+//         whileTap={{ scale: 0.9 }}
+//       >
+//         <ChevronLeft size={24} />
+//       </motion.button>
+//       <motion.button
+//         className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+//         onClick={nextSlide}
+//         whileHover={{ scale: 1.1 }}
+//         whileTap={{ scale: 0.9 }}
+//       >
+//         <ChevronRight size={24} />
+//       </motion.button>
+//     </div>
+//   )
+// }
 
 export default AboutPage

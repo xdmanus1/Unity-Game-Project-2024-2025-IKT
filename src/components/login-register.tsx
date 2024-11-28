@@ -44,10 +44,13 @@ const LoginRegister: React.FC = () => {
         await signInWithEmailAndPassword(auth, email, password)
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        // Store username in Firestore
+        // Store user data in Firestore with game-related fields
         await setDoc(doc(db, "users", userCredential.user.uid), {
+          email: email,
           username: username,
-          email: email
+          kills: 0,
+          maxscore: 0,
+          hoursplayed: "0"
         })
       }
       // Handle successful login/register
@@ -55,7 +58,7 @@ const LoginRegister: React.FC = () => {
       console.log('Success!')
     } catch (error) {
       setShowAlert(true)
-      setError(t("errorSignInWithGoogle"))
+      setError(t("errorSignInFailed"))
       console.error(error)
       setTimeout(() => {
         setShowAlert(false)

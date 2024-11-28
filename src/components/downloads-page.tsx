@@ -4,7 +4,7 @@ import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useTranslation } from 'react-i18next'
-import { Monitor, Gamepad, Cog, Download } from 'lucide-react'
+import { Monitor, Gamepad,  Download } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import GitHubReleaseDownloader from './download'
 
@@ -106,7 +106,7 @@ export function DownloadsPageComponent() {
             ))}
           </div>
         </AnimatedSection>
-
+{/* 
         <AnimatedSection delay={0.8}>
           <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-none shadow-lg mt-16">
             <CardContent className="p-12">
@@ -123,11 +123,10 @@ export function DownloadsPageComponent() {
               </ul>
             </CardContent>
           </Card>
-        </AnimatedSection>
+        </AnimatedSection> */}
       </main>
     </div>
   )
 }
 
 export default DownloadsPageComponent
-

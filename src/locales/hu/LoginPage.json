@@ -11,6 +11,6 @@
     "signUpButton": "Regisztrálj",
     "alreadyHaveAccount": "Már van fiókod? Jelentkezz be",
     "Error": "Hiba",
-    "errorSignInWithGoogle": "A Google-lal való bejelentkezés nem sikerült. Próbáld meg később!",
+    "errorSignInWithGoogle": "A bejelentkezés nem sikerült. Próbáld meg később!",
     "errorSignInFailed": "A bejelentkezés nem sikerült. Próbáld meg később!"
 }

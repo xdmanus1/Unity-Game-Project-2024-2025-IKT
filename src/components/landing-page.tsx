@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react'
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { ChevronRight, Download, Star, Zap, Shield, Play } from "lucide-react"
+import { ChevronRight, Download, Star, Zap, Shield } from "lucide-react"
 import { useTranslation } from 'react-i18next'
-import test from './assets/placeholder.svg'
+import gameplay1 from './assets/gameplay1.png'
+import gameplay2 from './assets/gameplay2.png'
 import { useNavigate } from 'react-router-dom';
 import React from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card'
@@ -118,10 +119,10 @@ export default function LandingPage() {
   const navigateToAbout = () => {
     navigate('/download#top');
   };
-  const openYouTubeVideo = () => {
-    // Open the YouTube video in a new tab
-    window.open('https://www.youtube.com/watch?v=yourVideoId', '_blank');
-  };
+  // const openYouTubeVideo = () => {
+  //   // Open the YouTube video in a new tab
+  //   window.open('https://www.youtube.com/watch?v=yourVideoId', '_blank');
+  // };
   const { t } = useTranslation("landingPage");
   
   const [scrollY, setScrollY] = useState(0)
@@ -168,7 +169,7 @@ export default function LandingPage() {
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: test,
+          backgroundImage: gameplay1,
           transform: `translateY(${scrollY * 0.0000001}px)`,
         }}
       />
@@ -195,10 +196,10 @@ export default function LandingPage() {
       {t('hero.playButton')}
       <ChevronRight className="ml-2 h-4 w-4 inline" />
     </Button>
-                  <Button className="text-blue-400 border border-blue-400 hover:bg-blue-400 duration-300 hover:text-gray-900" onClick={openYouTubeVideo}>
+                  {/* <Button className="text-blue-400 border border-blue-400 hover:bg-blue-400 duration-300 hover:text-gray-900" onClick={openYouTubeVideo}>
                     <Play className="mr-2 h-4 w-4 inline" />
                     {t('hero.trailerButton')}
-                  </Button>
+                  </Button> */}
                 </div>
               </AnimatedSection>
               <AnimatedSection className="flex items-center justify-center">
@@ -206,7 +207,7 @@ export default function LandingPage() {
                   alt={t('images.gameplay')}
                   className="aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg shadow-blue-500/20"
                   height="400"
-                  src={test}
+                  src={gameplay1}
                   width="600"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
@@ -256,7 +257,7 @@ export default function LandingPage() {
                   alt={t('images.screenshot')}
                   className="aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg shadow-blue-500/20"
                   height="400"
-                  src={test}
+                  src={gameplay2}
                   width="600"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}

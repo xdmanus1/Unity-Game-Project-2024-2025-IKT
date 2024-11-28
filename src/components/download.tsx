@@ -1,9 +1,28 @@
 import { useState, useEffect } from 'react';
-import { Download, Loader2, AlertCircle, Check } from 'lucide-react';
+import { Download, Loader2, AlertCircle, Check, Smartphone } from 'lucide-react';
 import { useToast } from './hooks/use-toast';
 import { useTranslation } from 'react-i18next';
 import { Alert, AlertDescription } from './ui/alert';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+      setIsMobile(mobile);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
 
 const GitHubReleaseDownloader = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +31,21 @@ const GitHubReleaseDownloader = () => {
   const { toast } = useToast();
   const { t } = useTranslation('aboutPage');
   const [showAlert, setShowAlert] = useState(false);
+  const isMobile = useIsMobile();
 
   const downloadLatestRelease = async () => {
+    if (isMobile) {
+      const mobileError = t('mobileError', 'Downloads are only available on desktop devices.');
+      setError(mobileError);
+      setShowAlert(true);
+      toast({
+        variant: 'destructive',
+        title: t('downloadUnavailable', 'Download Unavailable'),
+        description: mobileError,
+      });
+      return;
+    }
+
     setIsLoading(true);
     setError('');
     setIsSuccess(false);
@@ -27,7 +59,7 @@ const GitHubReleaseDownloader = () => {
       );
 
       if (!response.ok) {
-        throw new Error('Failed to fetch release information');
+        throw new Error(t('fetchError', 'Failed to fetch release information'));
       }
 
       const release = await response.json();
@@ -37,7 +69,7 @@ const GitHubReleaseDownloader = () => {
       );
 
       if (!exeAsset) {
-        setError('No executable found in the latest release. Please check back later.');
+        setError(t('noExeError', 'No executable found in the latest release. Please check back later.'));
         setShowAlert(true);
         return;
       }
@@ -53,16 +85,16 @@ const GitHubReleaseDownloader = () => {
       setIsSuccess(true);
 
       toast({
-        title: 'Download Successful',
-        description: 'The file has been downloaded successfully.',
+        title: t('downloadSuccess', 'Download Successful'),
+        description: t('downloadSuccessDesc', 'The file has been downloaded successfully.'),
       });
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'An error occurred';
+      const errorMessage = err instanceof Error ? err.message : t('genericError', 'An error occurred');
       setError(errorMessage);
       setShowAlert(true);
       toast({
         variant: 'destructive',
-        title: 'Download Failed',
+        title: t('downloadFailed', 'Download Failed'),
         description: errorMessage,
       });
     } finally {
@@ -72,7 +104,7 @@ const GitHubReleaseDownloader = () => {
 
   useEffect(() => {
     if (showAlert) {
-      const timer = setTimeout(() => setShowAlert(false), 5000); // Auto-hide after 5s
+      const timer = setTimeout(() => setShowAlert(false), 5000);
       return () => clearTimeout(timer);
     }
   }, [showAlert]);
@@ -98,18 +130,30 @@ const GitHubReleaseDownloader = () => {
 
       <motion.button
         onClick={downloadLatestRelease}
-        disabled={isLoading || isSuccess}
-        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        whileHover={{ scale: isLoading || isSuccess ? 1 : 1.05 }}
+        disabled={isLoading || isSuccess || isMobile}
+        className={`font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-flex items-center gap-2 
+          ${isMobile 
+            ? 'bg-gray-400 cursor-not-allowed' 
+            : 'bg-blue-600 hover:bg-blue-700 text-white'} 
+          disabled:opacity-50 disabled:cursor-not-allowed`}
+        whileHover={{ scale: isLoading || isSuccess || isMobile ? 1 : 1.05 }}
       >
         {isLoading ? (
           <Loader2 className="animate-spin" />
         ) : isSuccess ? (
           <Check />
+        ) : isMobile ? (
+          <Smartphone />
         ) : (
           <Download />
         )}
-        {isLoading ? t('downloading') : isSuccess ? t('downloaded') : t('download')}
+        {isLoading 
+          ? t('downloading') 
+          : isSuccess 
+          ? t('downloaded') 
+          : isMobile 
+          ? t('desktopOnly', "Csak asztali számítógép") 
+          : t('download')}
       </motion.button>
     </div>
   );

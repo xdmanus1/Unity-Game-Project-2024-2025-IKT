@@ -1,5 +1,10 @@
 {
   "rules": {
+    "versions": {
+      ".read": true,
+      ".write": false,
+      ".indexOn": ["timestamp"] 
+    },
     ".read": "auth != null",
     ".write": "auth != null"
   }

@@ -1,37 +1,50 @@
 {
-    "title": "Quantum Vendetta Letöltése",
-    "launcher": {
-      "title": "Quantum Vendetta Indító Letöltése",
-      "description": "Töltsd le a Quantum Vendetta indítót, amely automatikusan telepíti és frissíti a játékot.",
-      "button": "Indító letöltése",
-      "downloading": "Letöltés folyamatban"
-    },
-    "download": {
-      "title": "Szerezd meg a játékot",
-      "description": "Töltsd le a Quantum Vendetta legújabb verzióját és kezdd el a kalandot!",
-      "button": "Letöltés most"
-    },
-    "tutorial": {
-      "title": "Gyors kezdési útmutató",
-      "step1": {
-        "title": "Indító letöltése",
-        "description": "Töltsd le és futtasd a Quantum Vendetta indítót."
-      },
-      "step2": {
-        "title": "Telepítés",
-        "description": "Az indítóban letöltés gombal letölti és telepíti a játékot."
-      },
-      "step3": {
-        "title": "Játék",
-        "description": "Indítsd el a játékot az indítón keresztül és kezdd el a kvantum kalandodat!"
-      }
-    },
-    "systemRequirements": {
-      "title": "Rendszerkövetelmények",
-      "os": "Operációs rendszer: Windows 10-11 64-bit",
-      "processor": "Processzor: Intel Core i5 vagy azzal egyenértékű",
-      "memory": "Memória: 8 GB RAM",
-      "graphics": "Grafika: NVIDIA GeForce GTX 1060 vagy azzal egyenértékű",
-      "storage": "Tárhely: 20 GB szabad hely"
+  "title": "Quantum Vendetta Letöltése",
+  "launcher": {
+    "title": "Quantum Vendetta Indító Letöltése",
+    "description": "Töltsd le a Quantum Vendetta indítót, amelyben telepítheti és frissítheti a játékot.",
+    "button": "Indító letöltése",
+    "downloading": "Letöltés folyamatban",
+    "mobile": {
+      "description": "A Quantum Vendetta csak számítógépen érhető el. Kérjük, látogasd meg ezt az oldalt a számítógépeden a letöltéshez."
     }
-  }
+  },
+  "download": {
+    "title": "Szerezd meg a játékot",
+    "description": "Töltsd le a Quantum Vendetta legújabb verzióját és kezdd el a kalandot!",
+    "button": "Letöltés most"
+  },
+  "tutorial": {
+    "title": "Gyors kezdési útmutató",
+    "step1": {
+      "title": "Indító letöltése",
+      "description": "Töltsd le és futtasd a Quantum Vendetta indítót."
+    },
+    "step2": {
+      "title": "Telepítés",
+      "description": "Az indítóban letöltés gombal letölti és telepíti a játékot."
+    },
+    "step3": {
+      "title": "Játék",
+      "description": "Indítsd el a játékot az indítón keresztül és kezdd el a kvantum kalandodat!"
+    }
+  },
+  "systemRequirements": {
+    "title": "Rendszerkövetelmények",
+    "os": "Operációs rendszer: Windows 10-11 64-bit",
+    "processor": "Processzor: Intel Core i5 vagy azzal egyenértékű",
+    "memory": "Memória: 8 GB RAM",
+    "graphics": "Grafika: NVIDIA GeForce GTX 1060 vagy azzal egyenértékű",
+    "storage": "Tárhely: 20 GB szabad hely"
+  },
+  "mobile": {
+    "warning": "A Quantum Vendetta csak számítógépen tölthető le. Kérjük, látogasd meg ezt az oldalt a számítógépeden.",
+    "unavailable": "Csak Számítógépen Elérhető"
+  },
+  "errors": {
+    "fetchFailed": "A játék információinak letöltése sikertelen",
+    "noExecutable": "Nem található telepítő a legújabb verzióban",
+    "unknown": "Ismeretlen hiba történt"
+  },
+  "desktopOnly": "Csak asztali számítógép"
+}
