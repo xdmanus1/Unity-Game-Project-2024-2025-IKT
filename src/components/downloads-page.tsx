@@ -10,7 +10,7 @@ import GitHubReleaseDownloader from './download'
 
 interface AnimatedSectionProps {
   children: React.ReactNode; // Accepts any valid React child (elements, strings, etc.)
-  delay?: number; // Optional, defaults to 0
+  delay?: number; 
 }
 
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, delay = 0 }) => {
@@ -43,8 +43,8 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, delay = 0 }
 }
 interface TutorialStepProps {
   icon: React.ElementType; // The type for the icon component
-  title: string; // The title must be a string
-  description: string; // The description must be a string
+  title: string; 
+  description: string;  
 }
 
 const TutorialStep: React.FC<TutorialStepProps> = ({ icon: Icon, title, description }) => (
@@ -106,24 +106,6 @@ export function DownloadsPageComponent() {
             ))}
           </div>
         </AnimatedSection>
-{/* 
-        <AnimatedSection delay={0.8}>
-          <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-none shadow-lg mt-16">
-            <CardContent className="p-12">
-              <h2 className="text-3xl font-bold mb-6 flex items-center text-gray-300">
-                <Cog className="mr-4 text-blue-500" size={32} />
-                {t('systemRequirements.title')}
-              </h2>
-              <ul className="list-disc list-inside text-gray-300 space-y-2 text-lg">
-                <li>{t('systemRequirements.os')}</li>
-                <li>{t('systemRequirements.processor')}</li>
-                <li>{t('systemRequirements.memory')}</li>
-                <li>{t('systemRequirements.graphics')}</li>
-                <li>{t('systemRequirements.storage')}</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </AnimatedSection> */}
       </main>
     </div>
   )
